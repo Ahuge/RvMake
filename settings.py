@@ -16,7 +16,6 @@ INCLUDED_FILE_TYPE = (
 
 PYTHON_INIT = "__init__.py"
 PACKAGE_NAME = "PACKAGE_TEMPLATE"
-IMPORT_ERROR_RE = re.compile("No\smodule\snamed\s(\w+)")
 INIT_FUNCTION_NAME = "self.init"
 PATH_RESOLVE_DEPTH = 2
 LOGGING_FORMAT = "%(name)s: %(filename)s [%(levelname)s]: %(message)s"

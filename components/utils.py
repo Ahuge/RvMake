@@ -1,11 +1,7 @@
-import imp
 import os
-import re
-import sys
 
-from settings import logger, PATH_RESOLVE_DEPTH, IMPORT_ERROR_RE
+from settings import logger, PATH_RESOLVE_DEPTH
 from .exception_classes import BuildException, ConfigurationException
-from third_party import mock
 
 
 def resolve_path(path, recurse=True):
