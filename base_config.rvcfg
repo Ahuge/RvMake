@@ -1,0 +1,23 @@
+# ----------------------------------------------- Rv Package variables ----------------------------------------------- #
+package: "My Custom Plugin!"
+min_rv_version: "4.0.12"
+# requires: "''"
+# icon: "./icon.png"
+# imageio: []
+# movieio: []
+# hidden: false
+# system: false
+# optional: true
+# load: "immediate"
+
+# author: "Alex Hughes"
+# organization: "Alex Hughes"
+# contact: "ahughesalex@hotmail.com"
+# url: "http://github.com/Ahuge"
+
+description: "This is my plugin!"
+
+# --------------------------------------------- Build process variables --------------------------------------------- #
+main: "my_plugin.py"
+include types: [".py", ".mu"]
+build path: "./build"

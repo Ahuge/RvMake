@@ -1,0 +1,5 @@
+Run one of the following commands to see it build.
+
+python "../make.py" custom_lut_menu_mode
+python "../make.py" pyside_example
+python "../make.py" pyhello
