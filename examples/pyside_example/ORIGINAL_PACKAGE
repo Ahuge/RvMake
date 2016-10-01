@@ -1,0 +1,22 @@
+package: PySide Example
+author: Arkell Rasiah
+organization: Autodesk
+contact: support@shotgunsoftware.com
+version: 1.0
+requires: ''
+rv: 6.2.4
+optional: true
+url: http://www.shotgunsoftware.com
+
+modes: 
+  - file: pyside_example.py
+    menu: 'Tools/PySide Example'
+    shortcut: ''
+    event: ''
+    load: immediate
+
+description: |
+    <p>
+    This is a simple python package that uses PySide and PyOpenGL.
+    </p>
+

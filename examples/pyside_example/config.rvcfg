@@ -1,0 +1,20 @@
+# ----------------------------------------------- Rv Package variables ----------------------------------------------- #
+package: "PySide Example"
+min_rv_version: "6.2.4"
+requires: "''"
+optional: true
+load: "immediate"
+
+author: "Arkell Rasiah"
+organization: "Autodesk"
+contact: "support@shotgunsoftware.com"
+url: "http://www.shotgunsoftware.com"
+
+description: "<p>
+    This is a simple python package that uses PySide and PyOpenGL.
+    </p>"
+
+# --------------------------------------------- Build process variables --------------------------------------------- #
+main: "pyside_example.py"
+include types: [".py", ".mu", ".ui"]
+build path: "./build"

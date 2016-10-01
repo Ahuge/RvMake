@@ -1,0 +1,20 @@
+# ----------------------------------------------- Rv Package variables ----------------------------------------------- #
+package: "Python Example Mode"
+min_rv_version: "3.12.9"
+requires: "''"
+optional: true
+load: "immediate"
+
+author: "Dr Benway"
+organization: "Tweak Software"
+contact: "support@tweaksoftware.com"
+url: "http://www.tweaksoftware.com"
+
+description: "<p>
+    This is a simple python package example
+    </p>"
+
+# --------------------------------------------- Build process variables --------------------------------------------- #
+main: "pyhello.py"
+include types: [".py", ".mu"]
+build path: "./build"
