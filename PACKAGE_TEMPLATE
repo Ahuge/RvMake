@@ -1,13 +1,6 @@
-package: {package}
-author: {author}
-organization: {organization}
-version: {version}
-rv: {min_rv_version}
-requires: '{requires}'
-
-modes:{files}
-    load: {load}
-
+package: {package}{author}{organization}{contact}
+version: {version}{url}
+rv: {min_rv_version}{requires}{icon}{imageio}{movieio}{hidden}{system}{optional}{modes}{files}
 
 description: |
 

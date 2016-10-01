@@ -4,12 +4,12 @@ import re
 import sys
 
 from settings import logger, PATH_RESOLVE_DEPTH, IMPORT_ERROR_RE
-from .exception_classes import BuildException
+from .exception_classes import BuildException, ConfigurationException
 from third_party import mock
 
 
-def resolve_path(path):
-    if not os.path.exists(os.path.abspath(path)):
+def resolve_path(path, recurse=True):
+    if not os.path.exists(os.path.abspath(path)) and recurse:
         logger.debug("Path does not exists recursing up: %s " % os.path.abspath(path))
         temp_path = path
         depth = 0
@@ -21,40 +21,23 @@ def resolve_path(path):
         if depth >= PATH_RESOLVE_DEPTH:
             raise BuildException("Unable to resolve path %s" % path)
         return_path = temp_path
+    elif not os.path.exists(os.path.abspath(path)) and not recurse:
+        return_path = os.path.abspath(path)
+        try:
+            os.makedirs(path)
+        except WindowsError as e:
+            BuildException(str(e))
     else:
         return_path = os.path.abspath(path)
     return return_path.replace("\\", "/")
 
 
-def mock_import(mock_name):
-    logger.debug("Mocking %s" % mock_name)
-    sys.modules[mock_name] = mock.Mock()
+def get_driver(driver_name, files):
+    possible_drivers = sorted(filter(lambda x: True if driver_name in x else False, files),
+                              key=lambda x: len(x))
 
+    if not possible_drivers:
+        raise ConfigurationException("Could not find a suitable %s in the list of gathered files:\n\t%s"
+                                     % (driver_name, "\n\t".join(files)))
+    return possible_drivers[0]
 
-def import_driver(file_path):
-    directory = os.path.dirname(file_path)
-    name = os.path.splitext(os.path.basename(file_path))[0]
-    try:
-        _file, _pathname, _description = imp.find_module(name, [directory])
-    except ImportError as e:
-        raise BuildException("Could not import config[\"main\"] file. \"%s\"" % str(e))
-
-    module = None
-    try:
-        import_error = True
-        while import_error:
-            try:
-                logger.info("Importing driver %s" % _pathname)
-                module = imp.load_module(name, _file, _pathname, _description)
-                import_error = False
-            except ImportError as e:
-                match = re.match(IMPORT_ERROR_RE, str(e))
-                if not match:
-                    raise BuildException("Could not parse import error from parsing %s. %s" % (name, str(e)))
-                mock_import(match.group(1))
-    except Exception as e:
-        raise BuildException("Could not import config[\"main\"] file. \"%s\"" % str(e))
-    finally:
-        if _file:
-            _file.close()
-    return module

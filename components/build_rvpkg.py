@@ -10,7 +10,7 @@ def build_rvpkg(file_list, directory, version, config, package_text):
     package_name = '%s-%s.rvpkg' % (os.path.splitext(config['main'])[0], version)
     if "build path" not in config:
         raise PackagingException("No \"build path\" set in config. Please set \"build path\" to a folder on disk.")
-    package_path = os.path.join(resolve_path(config["build path"]), package_name)
+    package_path = os.path.join(resolve_path(config["build path"], recurse=False), package_name)
 
     if os.path.exists(package_path):
         logger.warning("Deleting %s" % package_path)
