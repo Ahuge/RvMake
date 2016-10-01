@@ -1,0 +1,14 @@
+package: {package}
+author: {author}
+organization: {organization}
+version: {version}
+rv: {min_rv_version}
+requires: '{requires}'
+
+modes:{files}
+    load: {load}
+
+
+description: |
+
+  {description}
