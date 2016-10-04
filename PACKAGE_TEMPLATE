@@ -1,6 +1,6 @@
 package: {package}{author}{organization}{contact}
 version: {version}{url}
-rv: {min_rv_version}{requires}{icon}{imageio}{movieio}{hidden}{system}{optional}{modes}{files}
+rv: {min_rv_version}{requires}{icon}{imageio}{movieio}{hidden}{system}{optional}{modes}
 
 description: |
 

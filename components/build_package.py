@@ -183,7 +183,7 @@ def build_package(package_template, config, file_list, version, driver, menus, s
     DEFAULT_CONFIG["optional"] = build_optional_str(DEFAULT_CONFIG)
     DEFAULT_CONFIG["modes"] = build_modes_str(driver, menus, shortcuts, events, DEFAULT_CONFIG.get("load", ""),
                                               DEFAULT_CONFIG.get("icon", ""), config.get("requires"))
-    DEFAULT_CONFIG["files"] = build_files_str(file_list)
+    # DEFAULT_CONFIG["files"] = build_files_str(file_list)
     DEFAULT_CONFIG["description"] = build_description_str(DEFAULT_CONFIG)
 
     template = package_template.format(**DEFAULT_CONFIG)
