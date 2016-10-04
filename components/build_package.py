@@ -59,11 +59,11 @@ def build_icon_str(config):
 def build_imageio_str(config):
     if "imageio" in config:
         if isinstance(config["imageio"], list):
-            io_str = "\n\t- ".join(config["imageio"])
+            io_str = "\n  - ".join(config["imageio"])
         else:
-            io_str = "\n\t- ".join(config["imageio"].split(""))
+            io_str = "\n  - ".join(config["imageio"].split(""))
         if io_str:
-            return "\nimageio:\n\t " + io_str
+            return "\nimageio:\n   " + io_str
         else:
             return "\nimageio: []"
     return ""
@@ -72,11 +72,11 @@ def build_imageio_str(config):
 def build_movieio_str(config):
     if "movieio" in config:
         if isinstance(config["movieio"], list):
-            io_str = "\n\t- ".join(config["movieio"])
+            io_str = "\n  - ".join(config["movieio"])
         else:
-            io_str = "\n\t- ".join(config["movieio"].split(""))
+            io_str = "\n  - ".join(config["movieio"].split(""))
         if io_str:
-            return "\nmovieio:\n\t " + io_str
+            return "\nmovieio:\n   " + io_str
         else:
             return "\nmovieio: []"
     return ""
@@ -102,20 +102,20 @@ def build_optional_str(config):
 
 def build_modes_str(driver, menus, shortcuts, events, load, icon, requires):
     mode_template = """\n\nmodes:
-    - file: {driver}{menus}{shortcuts}{events}{load}{icon}
+  - file: {driver}{menus}{shortcuts}{events}{load}{icon}
     """
-    menu_template = "\n\tmenu: {menu}"
-    shortcut_template = "\n\tshortcut: {shortcut}"
-    event_template = "\n\tevent: {event}"
-    # requires_template = "\n\trequires: {requires}"
+    menu_template = "\n    menu: {menu}"
+    shortcut_template = "\n    shortcut: {shortcut}"
+    event_template = "\n    event: {event}"
+    # requires_template = "\n  requires: {requires}"
 
     template_dictionary = {"driver": os.path.basename(driver)}
     if load:
-        template_dictionary["load"] = "\n\tload: %s" % load
+        template_dictionary["load"] = "\n    load: %s" % load
     else:
         template_dictionary["load"] = ""
     if icon:
-        template_dictionary["icon"] = "\n\ticon: %s" % icon
+        template_dictionary["icon"] = "\n    icon: %s" % icon
     else:
         template_dictionary["icon"] = ""
 
@@ -144,7 +144,7 @@ def build_modes_str(driver, menus, shortcuts, events, load, icon, requires):
 
 def build_files_str(files):
     files_template = """\nfiles: {files}"""
-    file_template = "\n\t- file: {f}"
+    file_template = "\n  - file: {f}"
     file_str = ""
     for f in files:
         file_str += file_template.format(f=os.path.basename(f))
