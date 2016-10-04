@@ -1,6 +1,6 @@
 from rv import rvtypes, commands
 
-__version__ = 1.0
+__version__ = 1.1
 
 
 class PyHello(rvtypes.MinorMode):
@@ -16,9 +16,11 @@ class PyHello(rvtypes.MinorMode):
 
     def __init__(self):
         rvtypes.MinorMode.__init__(self)
-        self.init("pyhello", 
-                  [("key-down--Z", self.togglePlayback, "Z key")], 
-                  None)
+        self.init("pyhello",
+                  [("key-down--Z", self.togglePlayback, "Z key")],
+                  None,
+                  [("Tools",
+                    [("PYHELLO", self.togglePlayback, "Z", None)])])
 
 
 def createMode():
