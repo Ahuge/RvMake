@@ -84,19 +84,19 @@ def build_movieio_str(config):
 
 def build_hidden_str(config):
     if "hidden" in config:
-        return "\nhidden: " + str(config["hidden"])
+        return "\nhidden: " + str(config["hidden"]).lower()
     return ""
 
 
 def build_system_str(config):
     if "system" in config:
-        return "\nsystem: " + str(config["system"])
+        return "\nsystem: " + str(config["system"]).lower()
     return ""
 
 
 def build_optional_str(config):
     if "optional" in config:
-        return "\noptional: " + str(config["optional"])
+        return "\noptional: " + str(config["optional"]).lower()
     return ""
 
 
